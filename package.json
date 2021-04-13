@@ -18,7 +18,6 @@
     "accounts",
     "keys"
   ],
-  "author": "Ke Wen <wk3368@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/starcoinorg/stc-keyring-controller/issues"
@@ -45,8 +44,8 @@
     "browser-passworder": "^2.0.3",
     "eth-hd-keyring": "^3.5.0",
     "eth-sig-util": "^1.4.0",
-    "eth-simple-keyring": "^3.5.0",
-    "ethereumjs-util": "^5.1.2",
+    "@starcoin/stc-simple-keyring": "^0.1.0",
+    "@starcoin/stc-util": "^0.2.0",
     "loglevel": "^1.5.0",
     "obs-store": "^4.0.3"
   },

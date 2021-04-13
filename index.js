@@ -1,7 +1,7 @@
 
 const { EventEmitter } = require('events')
 const log = require('loglevel')
-const ethUtil = require('ethereumjs-util')
+const ethUtil = require('@starcoin/stc-util')
 
 const { BN } = ethUtil
 const bip39 = require('bip39')
@@ -9,7 +9,7 @@ const ObservableStore = require('obs-store')
 const encryptor = require('browser-passworder')
 const { normalize: normalizeAddress } = require('eth-sig-util')
 
-const SimpleKeyring = require('eth-simple-keyring')
+const SimpleKeyring = require('@starcoin/stc-simple-keyring')
 const HdKeyring = require('eth-hd-keyring')
 
 const keyringTypes = [
