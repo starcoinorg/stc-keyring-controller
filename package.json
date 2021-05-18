@@ -44,6 +44,7 @@
     "browser-passworder": "^2.0.3",
     "eth-hd-keyring": "^3.5.0",
     "eth-sig-util": "^1.4.0",
+    "@starcoin/stc-hd-keyring": "^0.1.0",
     "@starcoin/stc-simple-keyring": "^0.1.0",
     "@starcoin/stc-util": "^0.2.0",
     "loglevel": "^1.5.0",
