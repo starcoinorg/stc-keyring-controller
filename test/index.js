@@ -6,7 +6,6 @@ const sigUtil = require('eth-sig-util')
 
 const normalizeAddress = sigUtil.normalize
 const sinon = require('sinon')
-const Wallet = require('ethereumjs-wallet')
 
 const configManagerGen = require('./lib/mock-config-manager')
 const mockEncryptor = require('./lib/mock-encryptor')
@@ -169,12 +168,12 @@ describe('KeyringController', function () {
     it('returns the result of getAccounts for each keyring', async function () {
       keyringController.keyrings = [
         {
-          getAccounts () {
+          getAccounts() {
             return Promise.resolve([1, 2, 3])
           },
         },
         {
-          getAccounts () {
+          getAccounts() {
             return Promise.resolve([4, 5, 6])
           },
         },
@@ -282,24 +281,6 @@ describe('KeyringController', function () {
       assert.equal(keyringController.getKeyringForAccount.getCall(0).args[0], normalizeAddress(address))
       assert(keyring.getAppKeyAddress.calledOnce)
       assert.deepEqual(keyring.getAppKeyAddress.getCall(0).args, [normalizeAddress(address), 'someapp.origin.io'])
-    })
-  })
-
-  describe('exportAppKeyForAddress', function () {
-
-    it('returns a unique key', async function () {
-      const address = '0x01560cd3bac62cc6d7e6380600d9317363400896'
-      const privateKey = '0xb8a9c05beeedb25df85f8d641538cbffedf67216048de9c678ee26260eb91952'
-      await keyringController.addNewKeyring('Simple Key Pair', [privateKey])
-      const appKeyAddress = await keyringController.getAppKeyAddress(address, 'someapp.origin.io')
-
-      const privateAppKey = await keyringController.exportAppKeyForAddress(address, 'someapp.origin.io')
-
-      const wallet = Wallet.fromPrivateKey(ethUtil.toBuffer(`0x${privateAppKey}`))
-      const recoveredAddress = `0x${wallet.getAddress().toString('hex')}`
-
-      assert.equal(recoveredAddress, appKeyAddress, 'Exported the appropriate private key')
-      assert.notEqual(privateAppKey, privateKey)
     })
   })
 })

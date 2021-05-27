@@ -1,6 +1,6 @@
 {
   "name": "@starcoin/stc-keyring-controller",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A module for managing various keyrings of Starcoin accounts, encrypting them, and using them.",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-json": "^2.1.1",
     "eslint-plugin-mocha": "^6.0.0",
-    "ethereumjs-wallet": "^0.6.3",
     "jsdom": "^11.12.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^7.1.2",
@@ -39,14 +38,13 @@
     "sinon": "^7.2.7"
   },
   "dependencies": {
+    "@starcoin/stc-hd-keyring": "^0.2.0",
+    "@starcoin/stc-simple-keyring": "^0.2.0",
+    "@starcoin/stc-util": "^0.3.0",
     "bip39": "^2.4.0",
     "bluebird": "^3.5.0",
     "browser-passworder": "^2.0.3",
-    "eth-hd-keyring": "^3.5.0",
     "eth-sig-util": "^1.4.0",
-    "@starcoin/stc-hd-keyring": "^0.1.0",
-    "@starcoin/stc-simple-keyring": "^0.1.0",
-    "@starcoin/stc-util": "^0.2.0",
     "loglevel": "^1.5.0",
     "obs-store": "^4.0.3"
   },

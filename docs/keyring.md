@@ -45,18 +45,15 @@ When this method is called, you must return an array of hex-string addresses for
 
 This method will receive a hex-prefixed, all-lowercase address string for the account you should sign the incoming transaction with.
 
-For your convenience, the transaction is an instance of ethereumjs-tx, (https://github.com/ethereumjs/ethereumjs-tx) so signing can be as simple as:
+For your convenience, the transaction is an instance of RawUserTransaction, (https://github.com/starcoinorg/starcoin.js/blob/master/src/lib/runtime/starcoin_types/index.ts#L504)  
 
-```
-transaction.sign(privateKey)
-```
-
-You must return a valid signed ethereumjs-tx (https://github.com/ethereumjs/ethereumjs-tx) object when complete, it can be the same transaction you received.
-
-### signMessage(address, data)
-
-The `eth_sign` method will receive the incoming data, alread hashed, and must sign that hash, and then return the raw signed hash.
+it returns a hex that will be used for [txpool.submit_hex_transaction](https://playground.open-rpc.org/?schemaUrl=https://developer.starcoin.org/rpc/schema/txpool.json)
 
 ### exportAccount(address)
 
 Exports the specified account as a private key hex string.
+
+### removeAccount(address)
+
+removes the specified account from the list of accounts.
+
