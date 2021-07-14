@@ -1,6 +1,6 @@
 {
   "name": "@starcoin/stc-keyring-controller",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A module for managing various keyrings of Starcoin accounts, encrypting them, and using them.",
   "main": "index.js",
   "scripts": {
@@ -38,8 +38,8 @@
     "sinon": "^7.2.7"
   },
   "dependencies": {
-    "@starcoin/stc-hd-keyring": "^1.4.0",
-    "@starcoin/stc-simple-keyring": "^1.4.0",
+    "@starcoin/stc-hd-keyring": "^1.4.1",
+    "@starcoin/stc-simple-keyring": "^1.4.1",
     "@starcoin/stc-util": "^0.3.0",
     "bip39": "^2.4.0",
     "bluebird": "^3.5.0",

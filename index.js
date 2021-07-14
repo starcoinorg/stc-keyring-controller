@@ -393,7 +393,7 @@ class KeyringController extends EventEmitter {
     const address = normalizeAddress(msgParams.from)
     return this.getKeyringForAccount(address)
       .then((keyring) => {
-        return keyring.signPersonalMessage(address, msgParams.data, opts)
+        return keyring.signPersonalMessage(address, msgParams.data, parseInt(msgParams.networkId, 10), opts)
       })
   }
 
