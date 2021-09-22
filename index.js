@@ -1,9 +1,9 @@
 
 const { EventEmitter } = require('events')
 const log = require('loglevel')
-const ethUtil = require('@starcoin/stc-util')
+const stcUtil = require('@starcoin/stc-util')
 
-const { BN } = ethUtil
+const { BN } = stcUtil
 const bip39 = require('bip39')
 const ObservableStore = require('obs-store')
 const encryptor = require('browser-passworder')
@@ -247,7 +247,7 @@ class KeyringController extends EventEmitter {
               accounts.find(
                 (key) => (
                   key === newAccountArray[0] ||
-                  key === ethUtil.stripHexPrefix(newAccountArray[0])),
+                  key === stcUtil.stripHexPrefix(newAccountArray[0])),
               ),
             )
             return isIncluded
@@ -707,9 +707,9 @@ class KeyringController extends EventEmitter {
    */
   addGasBuffer(gas) {
     const gasBuffer = new BN('100000', 10)
-    const bnGas = new BN(ethUtil.stripHexPrefix(gas), 16)
+    const bnGas = new BN(stcUtil.stripHexPrefix(gas), 16)
     const correct = bnGas.add(gasBuffer)
-    return ethUtil.addHexPrefix(correct.toString(16))
+    return stcUtil.addHexPrefix(correct.toString(16))
   }
 
   /**
