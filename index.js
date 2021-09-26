@@ -398,6 +398,20 @@ class KeyringController extends EventEmitter {
   }
 
   /**
+   * Get public key
+   *
+   * @param {Object} address - The address to get the public key for.
+   * @returns {Promise<Buffer>} The public key.
+   */
+  getPublicKeyFor(_address, opts = {}) {
+    const address = normalizeAddress(_address)
+    return this.getKeyringForAccount(address)
+      .then((keyring) => {
+        return keyring.getPublicKeyFor(address, opts)
+      })
+  }
+
+  /**
    * Get encryption public key
    *
    * Get encryption public key for using in encrypt/decrypt process.
@@ -422,9 +436,11 @@ class KeyringController extends EventEmitter {
    * @returns {Promise<Buffer>} The raw decryption result.
    */
   decryptMessage(msgParams, opts = {}) {
+    console.log('keyringcontroller decryptMessage')
     const address = normalizeAddress(msgParams.from)
     return this.getKeyringForAccount(address)
       .then((keyring) => {
+        console.log(keyring)
         return keyring.decryptMessage(address, msgParams.data, opts)
       })
   }
