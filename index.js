@@ -398,6 +398,20 @@ class KeyringController extends EventEmitter {
   }
 
   /**
+   * Get ReceiptIdentifier
+   *
+   * @param {Object} _address - The address to get the ReceiptIdentifier for.
+   * @returns {Promise<string>} The ReceiptIdentifier.
+   */
+  getReceiptIdentifier(_address) {
+    const address = normalizeAddress(_address)
+    return this.getKeyringForAccount(address)
+      .then((keyring) => {
+        return keyring.getReceiptIdentifier(address)
+      })
+  }
+
+  /**
    * Get public key
    *
    * @param {Object} address - The address to get the public key for.
