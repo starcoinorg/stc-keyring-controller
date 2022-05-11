@@ -324,7 +324,7 @@ class KeyringController extends EventEmitter {
           return keyring.getAccounts()
         }
         return Promise.reject(new Error(
-          `Keyring ${keyring.type} doesn't support account removal operations`,
+          `Keyring ${ keyring.type } doesn't support account removal operations`,
         ))
       })
       .then((accounts) => {
@@ -498,7 +498,7 @@ class KeyringController extends EventEmitter {
     const address = normalizeAddress(_address)
     const keyring = await this.getKeyringForAccount(address)
     if (!('exportAccount' in keyring)) {
-      throw new Error(`The keyring for address ${_address} does not support exporting.`)
+      throw new Error(`The keyring for address ${ _address } does not support exporting.`)
     }
     return keyring.exportAccount(address, { withAppKeyOrigin: origin })
   }
@@ -623,9 +623,14 @@ class KeyringController extends EventEmitter {
    */
   async _restoreKeyring(serialized) {
     const { type, data } = serialized
-
     const Keyring = this.getKeyringClassForType(type)
-    const keyring = new Keyring()
+    const opts = {}
+    if (type === 'OneKey Hardware') {
+      opts.persistAllKeyringsInsideOneKey = () => {
+        this.persistAllKeyrings(this.password)
+      }
+    }
+    const keyring = new Keyring(opts)
     await keyring.deserialize(data)
     // getAccounts also validates the accounts for some keyrings
     await keyring.getAccounts()
