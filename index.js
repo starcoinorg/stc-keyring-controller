@@ -103,6 +103,7 @@ class KeyringController extends EventEmitter {
         return this.addNewKeyring('HD Key Tree', {
           mnemonic: seed,
           numberOfAccounts: 1,
+          hdPath: `m/44'/637'/0'/0'`
         })
       })
       .then((firstKeyring) => {
@@ -423,8 +424,8 @@ class KeyringController extends EventEmitter {
       .then((keyring) => {
         return keyring.getPublicKeyFor(address, opts)
       })
-  }
 
+  }
   /**
    * Get encryption public key
    *
