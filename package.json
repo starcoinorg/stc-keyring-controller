@@ -38,6 +38,7 @@
     "sinon": "^7.2.7"
   },
   "dependencies": {
+    "@starcoin/aptos-hd-keyring": "^1.6.0",
     "@starcoin/stc-hd-keyring": "^1.5.3",
     "@starcoin/stc-simple-keyring": "^1.5.3",
     "@starcoin/stc-util": "^0.3.0",

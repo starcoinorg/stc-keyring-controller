@@ -11,10 +11,12 @@ const { normalize: normalizeAddress } = require('eth-sig-util')
 
 const SimpleKeyring = require('@starcoin/stc-simple-keyring')
 const HdKeyring = require('@starcoin/stc-hd-keyring')
+const HdKeyringAptos = require('@starcoin/aptos-hd-keyring')
 
 const keyringTypes = [
   SimpleKeyring,
   HdKeyring,
+  HdKeyringAptos,
 ]
 
 class KeyringController extends EventEmitter {
@@ -100,10 +102,9 @@ class KeyringController extends EventEmitter {
 
     return this.persistAllKeyrings(password)
       .then(() => {
-        return this.addNewKeyring('HD Key Tree', {
+        return this.addNewKeyring('Aptos HD Key Tree', {
           mnemonic: seed,
           numberOfAccounts: 1,
-          hdPath: `m/44'/637'/0'/0'`
         })
       })
       .then((firstKeyring) => {
@@ -522,7 +523,7 @@ class KeyringController extends EventEmitter {
    */
   createFirstKeyTree() {
     this.clearKeyrings()
-    return this.addNewKeyring('HD Key Tree', { numberOfAccounts: 1 })
+    return this.addNewKeyring('Aptos HD Key Tree', { numberOfAccounts: 1 })
       .then((keyring) => {
         return keyring.getAccounts()
       })
